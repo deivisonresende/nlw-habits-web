@@ -5,12 +5,13 @@ import clsx from 'clsx'
 import { Check } from 'phosphor-react';
 
 interface HabitDayProps {
-  amount: number;
-  completed: number;
+  date: Date;
+  amount?: number;
+  completed?: number;
 }
 
-export function HabitDay(props: HabitDayProps){
-  const percent  = Math.round((props.completed / props.amount) * 100)
+export function HabitDay({ amount = 0, completed= 0 }: HabitDayProps){
+  const percent =  amount > 0 ? Math.round((completed / amount) * 100) : 0
 
   return (
     <Popover.Root>
